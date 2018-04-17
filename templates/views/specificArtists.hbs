@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Amptone Records: {{data.artists.name}}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="utf-8"/>
+		<meta name="description" content="Official website for Amptone Records! Amptone records is a Shanghai-based record label."/>
+		<meta name="copyright" content="Chan Woo Kim">
+		<meta name="author" content="Chan Woo Kim"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/shared.css">
+		<link rel="stylesheet" href="/css/standard.css">
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/toggle.css">
+		<link rel="stylesheet" href="/css/main-page-rest.css">
+    <script src="/scripts/jquery-3.2.1.js"></script>
+
+    <link rel="stylesheet" href="/css/specific-artists-style.css" />
+    <script src="/scripts/soundcloud-api.js"></script>
+  </head>
+  <body>
+    {{>nav}}
+
+    <style>
+
+    </style>
+    <div class="contain">
+      <div class="first-display-contain">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="contain-artist-info">
+              <h1 class="artist-name-display-heading">{{data.artists.name}}</h1>
+              <p class="artist-description-display">
+                {{data.artists.artistDescription}}
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <img class="artist-full-image" src="{{data.artists.secondimage.url}}" />
+          </div>
+        </div>
+      </div>
+      {{#if data.artists.featuredSongName}}
+        <div class="featured-song-contain">
+          <h1 class="featured-song-label">Featured song</h1>
+          <div class="contain-featured-song">
+            <div class="row">
+              <div class="col-md-4">
+                <img class="featured-song-specific-artist-image" src="{{data.artists.featuredSongPhoto.url}}" />
+              </div>
+              <div class="col-md-8">
+                <div class="contain-specific-artist-featured-song">
+                  <h3 class="specific-artist-featured-song-name">
+                    {{data.artists.featuredSongName}}
+                  </h3>
+                  <p class="featured-song-album">
+                    <i>{{data.artists.featuredSongAlbumName}}</i>
+                  </p>
+                  <p class="featured-song-description">
+                    {{data.artists.featuredSongDescription}}
+                  </p>
+                  <a class="featured-song-link" href="{{data.artists.featuredSongLink}}">
+                    <span>Listen</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{/if}}
+      <div class="albums-contain">
+        {{#if data.artistAlbums}}
+          <h1 class="albums-contain-label">Albums</h1>
+          {{#each data.artistAlbums}}
+            <div class="one-album">
+              <div class="row">
+                <div class="col-md-6">
+                  <iframe class="iframe" height="465" scrolling="no" frameborder="no"
+                src="https://w.soundcloud.com/player/?url={{this.albumSoundcloudLinks}}">
+                </iframe>
+                </div>
+                <div class="col-md-6">
+                  <img class="album-photo-class" src="{{this.albumPhoto}}"/>
+                </div>
+                <style>
+                  .album-photo-class{
+                    max-width:90%;
+                    max-height:90%;
+
+                  }
+                </style>
+              </div>
+            </div>
+          {{/each}}
+        {{else}}
+          <div style="width:100%; height:200px">
+
+          </div>
+        {{/if}}
+
+      </div>
+    </div>
+    {{>footer}}
+    <script src="/scripts/bootstrap.js"></script>
+    <script
+src="https://code.jquery.com/color/jquery.color.plus-names-2.1.2.min.js"
+integrity="sha256-Wp3wC/dKYQ/dCOUD7VUXXp4neLI5t0uUEF1pg0dFnAE="
+crossorigin="anonymous"></script>
+    <script src="/scripts/jq.js"></script>
+  </body>
+</html>

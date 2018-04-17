@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Events - Amptone Records</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="utf-8"/>
+		<meta name="description" content="Official website for Amptone Records! Amptone records is a Shanghai-based record label."/>
+		<meta name="copyright" content="Chan Woo Kim">
+		<meta name="author" content="Chan Woo Kim"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/shared.css">
+		<link rel="stylesheet" href="css/toggle.css">
+		<link rel="stylesheet" href="css/standard.css">
+		<link rel="stylesheet" href="css/events.css">
+
+
+    <script
+src="https://code.jquery.com/color/jquery.color.plus-names-2.1.2.min.js"
+integrity="sha256-Wp3wC/dKYQ/dCOUD7VUXXp4neLI5t0uUEF1pg0dFnAE="
+crossorigin="anonymous"></script>
+  </head>
+  <body>
+    {{> nav}}
+    {{console featuredEvent}}
+    <div class="menu-background" style="background-image:url('img/sample-event-main.jpg')">
+			<h1>Events</h1>
+			<div class="tint"></div>
+			<!--specific to artists-->
+      {{#each featuredEvent}}
+      <div class="background-artist-info">
+				<h3>{{eventTitle}}</h3>
+				<p>{{formatDate this.date}}</p>
+			</div>
+      {{/each}}
+
+    </div>
+    <div class="event-content">
+      {{#each featuredEvent}}
+  			<div class="featured-event">
+  				<h1>Featured Event</h1>
+  				<div class="featured-event-contain">
+  					<div class="featured-event-img" style="background-image: url('{{eventPhoto.url}}');"></div>
+  					<div class="featured-event-des">
+  						<h3>{{eventTitle}}</h3>
+  						<h4>{{formatDate this.date}}</h4>
+  						<p>{{eventDescription}}</p>
+  					</div>
+  				</div>
+  			</div>
+      {{/each}}
+			<div class="more-events contain">
+				<div class="row">
+          {{#each events}}
+  					<div class="col-md-6">
+  						<div class="one-event">
+  							<div class="tint"></div>
+  							<a href="/events/{{slug}}"><span></span></a>
+  							<h3>{{name}}</h3>
+  							<p>{{formatDate this.date}}</p>
+  						</div>
+  					</div>
+          {{/each}}
+				</div>
+			</div>
+		</div>
+    {{> footer}}
+    <script src="scripts/jquery-3.2.1.js"></script>
+		<script src="scripts/bootstrap.js"></script>
+		<script
+  src="https://code.jquery.com/color/jquery.color.plus-names-2.1.2.min.js"
+  integrity="sha256-Wp3wC/dKYQ/dCOUD7VUXXp4neLI5t0uUEF1pg0dFnAE="
+  crossorigin="anonymous"></script>
+  		<script src="scripts/jq.js"></script>
+  		<script src="scripts/events.js"></script>
+  </body>
+</html>
