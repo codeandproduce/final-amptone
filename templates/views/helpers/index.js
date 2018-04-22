@@ -322,6 +322,15 @@ module.exports = function () {
 	_helpers.console = function(something){
 		console.log(something);
 	}
+
+	_helpers.spotifyTrueSoundcloudFalse = function(input){
+		if(input.split()[0] == "<"){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 	_helpers.formatDate = function(date){
 		var thisdate = date.toString();
 		var array = thisdate.split(" ");

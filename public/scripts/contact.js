@@ -12,19 +12,19 @@ $('#emailContactForm').on('submit', function(e){
 
 socket.on('contact-form-processing', function(){
   $('#submitContactFormButton').text('Processing...');
-  $('#submitContactFormButton').css('color','#dd5e5e');
+  $('#submitContactFormButton').css('color','#0D121C');
   $('#submitContactFormButton').css('background-color','white');
-  $('#submitContactFormButton').css('border-color', '#dd5e5e');
+  $('#submitContactFormButton').css('border-color', '#0D121C');
   $('#submitContactFormButton').attr('disabled','disabled');
 });
 socket.on('contact-form-success', function(){
   $('#emailContactForm').css('display','none');
   $('.contact-empty').toggleClass('contact-done');
 });
-socket.on('contact-form-failure', function(){
-  alert('Submission failed.');
+socket.on('contact-form-failure', function(doc){
+  alert('Submission failed. Error message: '+doc.err);
   $('#submitContactFormButton').css('color','white');
-  $('#submitContactFormButton').css('background-color','#dd5e5e');
+  $('#submitContactFormButton').css('background-color','#0D121C');
   $('#submitContactFormButton').removeAttr('disabled');
   $('#submitContactFormButton').text('Submit');
 });

@@ -76,9 +76,7 @@
             <div class="one-album">
               <div class="row">
                 <div class="col-md-6">
-                  <iframe class="iframe" height="465" scrolling="no" frameborder="no"
-                src="https://w.soundcloud.com/player/?url={{this.albumSoundcloudLinks}}">
-                </iframe>
+                  {{embedAlbum this.albumSpotifyCode}}
                 </div>
                 <div class="col-md-6">
                   <img class="album-photo-class" src="{{this.albumPhoto}}"/>

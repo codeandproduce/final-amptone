@@ -6,6 +6,9 @@ require('dotenv').config();
 var keystone = require('keystone');
 var handlebars = require('express-handlebars');
 var socketIO = require('socket.io');
+var nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
+
 
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
@@ -67,8 +70,45 @@ keystone.set('nav', {
 keystone.start({
     onHttpServerCreated: function() {
         io = socketIO.listen(keystone.httpServer);
+
         io.on('connection', (socket) => {
         	console.log('connected');
-        });
-    }
+        	socket.on("contact-form-submit", (doc) => {
+       //  		doc = {name,
+    			// email,
+    			// subject,
+    			// message}
+    			io.emit("contact-form-processing");
+
+    			var transporter = nodemailer.createTransport(smtpTransport({
+				  service: 'gmail',
+				  host: 'smtp.gmail.com',
+				  auth: {
+				    user: process.env.OFFICIAL_AMPTONE_EMAIL,
+				    pass: process.env.OFFICIAL_AMPTONE_PASSWORD
+				  }
+				}));
+
+    			var mailOptions = {
+				    from: doc.email,
+				    to:'theofficialamptonerecords@gmail.com',
+				    subject: doc.subject,
+				    text: "=======================\n\nEmail from: "+doc.email+"\n"+"Name: "+doc.name+"\n\n=======================\n\n\n"+doc.message
+			  	};
+
+			  	transporter.sendMail(mailOptions, (error, info) => {
+			    if (error) {
+			    	io.emit("contact-form-failure", {
+			    		err: error
+			    	});
+			        return console.log('Error while sending mail: ' + error);
+			    } else {
+			    	io.emit("contact-form-success");
+			        console.log('Message sent: %s', info.messageId);
+			    }
+			    transporter.close();
+        		});
+        	});
+    	});
+	}
 });
