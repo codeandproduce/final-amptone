@@ -76,7 +76,7 @@
             <div class="one-album">
               <div class="row">
                 <div class="col-md-6">
-                  {{embedAlbum this.albumSpotifyCode}}
+                  <iframe src="{{parseForSpotify this.albumLink}}" width="100%" height="480" frameborder="0" allowtransparency="true"></iframe>
                 </div>
                 <div class="col-md-6">
                   <img class="album-photo-class" src="{{this.albumPhoto}}"/>

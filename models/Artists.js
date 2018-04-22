@@ -44,7 +44,7 @@ Artists.add({
   featuredSongPhoto:{
     type:Types.CloudinaryImage
   },
-  albumLinkOrCode:{
+  albumLink:{
     type:Types.TextArray
   },
   albumPhotos:{

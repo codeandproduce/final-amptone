@@ -20,9 +20,9 @@ exports = module.exports = function(req,res){
     });
     q.exec(function(err, result){
       locals.data.artists = result;
-      for(var br = 0; br<result.albumSoundcloudLinks.length; br++){
+      for(var br = 0; br<result.albumLink.length; br++){
         locals.data.artistAlbums.push({
-          albumSoundcloudLinks: result.albumSoundcloudLinks[br],
+          albumLink: result.albumLink[br],
           albumPhoto: result.albumPhotos[br].url
         });
       }

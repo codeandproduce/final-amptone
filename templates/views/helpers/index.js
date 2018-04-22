@@ -323,13 +323,23 @@ module.exports = function () {
 		console.log(something);
 	}
 
-	_helpers.spotifyTrueSoundcloudFalse = function(input){
-		if(input.split()[0] == "<"){
-			return true;
+	_helpers.parseForSpotify = function(input){
+		//https://w.soundcloud.com/player/?url=https://soundcloud.com/theofficialraypage/sets/validated
+		//https://open.spotify.com/album/09SmmIwpk3z0nUco6ZMvOa?si=cFkQqzTJSQO1O58tVr1Jew
+		//012345678
+		if(input.charAt(8) == "o"){
+			// spotify link inputted
+			// change link to: https://open.spotify.com/embed/album/09SmmIwpk3z0nUco6ZMvOa
+			var arr = input.split("/");
+			var code = arr[arr.length-1].split("?")[0];
+			return "https://open.spotify.com/embed/album/"+code;
 		}else{
-			return false;
+			// soundcloud link inputted
+			//https://w.soundcloud.com/player/?url=...
+			return "https://w.soundcloud.com/player/?url="+input;
 		}
 	}
+
 
 	_helpers.formatDate = function(date){
 		var thisdate = date.toString();
