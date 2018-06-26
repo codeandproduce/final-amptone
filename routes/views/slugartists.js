@@ -20,11 +20,23 @@ exports = module.exports = function(req,res){
     });
     q.exec(function(err, result){
       locals.data.artists = result;
+      console.log("result:");
+      console.log(result);
+
       for(var br = 0; br<result.albumLink.length; br++){
-        locals.data.artistAlbums.push({
-          albumLink: result.albumLink[br],
-          albumPhoto: result.albumPhotos[br].url
-        });
+        if(result.albumPhotos[br] != null){
+          locals.data.artistAlbums.push({
+            albumLink: result.albumLink[br],
+            albumPhoto: result.albumPhotos[br].url
+          });
+        }else{
+          locals.data.artistAlbums.push({
+            albumLink: result.albumLink[br],
+            albumPhoto: "/img/image-coming-soon.jpg"
+          });
+
+        }
+        
       }
 
 
