@@ -15,6 +15,16 @@
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/toggle.css">
 		<link rel="stylesheet" href="css/main-page-rest.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121674910-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-121674910-2');
+    </script>
+
 
     <script
 src="https://code.jquery.com/color/jquery.color.plus-names-2.1.2.min.js"
@@ -142,15 +152,17 @@ crossorigin="anonymous"></script>
     			<div class="row">
               {{#each data.mainPageFeaturedReleases}}
               <div class="col-md-4 containContent">
-                <div class="release-container">
-      						<img class="release-img" src="{{coverImage.url}}">
-      						<h5 class="this-standard">Featured Release</h5>
-      						<h4 class="standard-title">{{songName}} - {{artistName}}</h4>
-      						<p class="standard-des">{{songDescription}}</p>
-                  {{#if songLink}}
-      						      <a href="{{songLink}}"><button class="standard-extend">Play</button></a>
-                    {{/if}}
-      					</div>
+                {{#each this}}
+                  <div class="release-container">
+        						<img class="release-img" src="{{coverImage.url}}">
+        						<h5 class="this-standard">Featured Release</h5>
+        						<h4 class="standard-title">{{songName}} - {{artistName}}</h4>
+        						<p class="standard-des">{{songDescription}}</p>
+                    {{#if songLink}}
+        						      <a href="{{songLink}}"><button class="standard-extend">Play</button></a>
+                      {{/if}}
+        					</div>
+                 {{/each}}
               </div>
 
               {{/each}}

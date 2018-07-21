@@ -53,6 +53,7 @@ keystone.set('locals', {
 	editable: keystone.content.editable,
 });
 
+
 // Load your project's Routes
 keystone.set('routes', require('./routes'));
 
@@ -62,6 +63,18 @@ keystone.set('nav', {
 	managements: 'managements',
 	artists:'artists'
 });
+
+
+
+
+keystone.set('mongo options', {
+	server: { 
+		reconnectTries: Number.MAX_VALUE 
+	} 
+});
+
+
+
 
 
 // Start Keystone to connect to your database and initialise the web server

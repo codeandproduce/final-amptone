@@ -25,9 +25,8 @@ exports = module.exports = function (req, res) {
 			var q2 = keystone.list('Main Page Featured Releases').model.find().sort('sortOrder');
 			q2.exec(function(err, result){
 				console.log('q2')
-				locals.data.mainPageFeaturedReleases = result;
-				locals.data.mainPageFeaturedReleases.reverse();
-
+				// var result = result.reverse()
+				locals.data.mainPageFeaturedReleases = organize(result);
 
 
 				var q3 = keystone.list('Main Page Featured Event').model.find().sort('sortOrder');
@@ -43,7 +42,6 @@ exports = module.exports = function (req, res) {
 					q4.exec(function(err, result){
 						console.log('q4')
 						locals.data.mainPageFeaturedNews = organize(result);
-						locals.data.mainPageFeaturedNews.arr1.reverse();
 						next(err)
 					});
 				});
@@ -76,5 +74,4 @@ function organize(arr){
 		}
 	}
 	return {arr1, arr2, arr3};
-
 }
