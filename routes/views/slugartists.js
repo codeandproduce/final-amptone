@@ -20,8 +20,6 @@ exports = module.exports = function(req,res){
     });
     q.exec(function(err, result){
       locals.data.artists = result;
-      console.log("result:");
-      console.log(result);
 
       for(var br = 0; br<result.albumLink.length; br++){
         if(result.albumPhotos[br] != null){

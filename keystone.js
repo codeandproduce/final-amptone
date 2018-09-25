@@ -68,9 +68,22 @@ keystone.set('nav', {
 
 
 keystone.set('mongo options', {
-	server: { 
-		reconnectTries: Number.MAX_VALUE 
-	} 
+	server: {
+		econnectTries: Number.MAX_VALUE,
+        auto_reconnect: true,
+        socketOptions: {
+            keepAlive: true,
+            connectTimeoutMS: 300000,
+            socketTimeoutMS: 300000
+        }
+    },
+    replset: {
+    	reconnectTries: Number.MAX_VALUE,
+        socketOptions: {
+            keepAlive: true,
+            connectTimeoutMS: 300000
+        }
+    }
 });
 
 

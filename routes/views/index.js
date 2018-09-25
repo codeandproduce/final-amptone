@@ -18,20 +18,17 @@ exports = module.exports = function (req, res) {
 	view.on('init', function(next){
 		var q = keystone.list('Main Page').model.find().sort('sortOrder');
 		q.exec(function(err, result){
-			console.log('q1')
 
 			locals.data.mainPage = result[0];
 
 			var q2 = keystone.list('Main Page Featured Releases').model.find().sort('sortOrder');
 			q2.exec(function(err, result){
-				console.log('q2')
 				// var result = result.reverse()
 				locals.data.mainPageFeaturedReleases = organize(result);
 
 
 				var q3 = keystone.list('Main Page Featured Event').model.find().sort('sortOrder');
 				q3.exec(function(err, result){
-					console.log('q3')
 
 					locals.data.mainPageFeaturedEvent = result;
 					locals.data.mainPageFeaturedEvent.reverse();
@@ -40,7 +37,6 @@ exports = module.exports = function (req, res) {
 
 					var q4 = keystone.list('Main Page Featured News').model.find().sort('sortOrder');
 					q4.exec(function(err, result){
-						console.log('q4')
 						locals.data.mainPageFeaturedNews = organize(result);
 						next(err)
 					});

@@ -43,7 +43,7 @@ exports = module.exports = function (app) {
 	app.get('/artists/:artist', routes.views.slugartists);
 	app.get('/merchandise', routes.views.merch);
 	app.get('/subscribe', routes.views.subscribe);
-//	app.get('/team', routes.views.team);
+	app.get('/team', routes.views.team);
 
 	app.post('/subscribe', routes.api.subscribe)
 
