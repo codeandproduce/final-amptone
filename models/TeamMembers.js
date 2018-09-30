@@ -5,8 +5,8 @@ var TeamMember = new keystone.List('TeamMembers',{
 	map:{
 		name:'name'
 	},
-	singular:'Event',
-	plural: 'Events',
+	singular:'member',
+	plural: 'members',
 	autokey:{
 		from:'name', path:'slug', unique:true
 	}
@@ -18,6 +18,9 @@ TeamMember.add({
 		required:true,
 		initial:true
 	},
+	image:{
+	    type:Types.CloudinaryImage
+	 },
 	position:{
 		type:String
 	},
