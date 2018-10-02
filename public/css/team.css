@@ -61,7 +61,7 @@
 
 .contain-asso{
 	margin-top:25px;
-	padding:50px;
+	margin-bottom:80px;
 }
 .asso-img{
 	width:80%;
@@ -69,12 +69,14 @@
 	margin:auto;
 }
 .asso-name{
-	font-size:40px;
+	font-size:30px;
+	font-weight:800;
 }
 .asso-title{
 	margin-top:0;
 	margin-bottom:20px;
-	font-size:25px;
+	font-size:18px;
+	font-weight:800;
 }
 .contain-asso-info{
 	width:80%;

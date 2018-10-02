@@ -67,18 +67,21 @@
 	 	</div>
 		</div>
 		<div class="officers-contain">
-		 	<h1 class="team-title">Associate Officers</h1>
 		 	<div class="row">
-		 		{{#each teamMembers}}
-			 		<div class="col-md-4 contain-asso">
-			 			<img class="asso-img" src="{{image.url}}">
-			 			<div class="contain-asso-info">
-			 				<h1 class="asso-name">{{name}}</h1>
-			 				<h2 class="asso-title">{{position}}</h2>
-			 				<p class="asso-des">{{description}}</p>
-			 			</div>
-			 		</div>
-			 	{{/each}}
+		 		{{#each data.teamMembers}}
+		 			<div class="col-md-4 contain-asso">
+		 				{{#each this}}
+		 				<div class="contain-asso">
+				 			<img class="asso-img" src="{{image.url}}">
+				 			<div class="contain-asso-info">
+				 				<h1 class="asso-name">{{name}}</h1>
+				 				<h2 class="asso-title">{{position}}</h2>
+				 				<p class="asso-des">{{description}}</p>
+				 			</div>
+				 		</div>
+		 				{{/each}}
+		 			</div>
+		 		{{/each}}
 		 	</div>
 		 </div>
 
